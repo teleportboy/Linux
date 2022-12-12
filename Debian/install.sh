@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -o errexit
 
 # System
 sudo apt install xinit curl git build-essential xsel arandr software-properties-common baobab htop doublecmd-qt rxvt-unicode apt-transport-https x11-utils -y
