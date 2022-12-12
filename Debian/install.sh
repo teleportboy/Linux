@@ -4,7 +4,7 @@ set -o errexit
 SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
 
 # System
-sudo apt install xinit curl git build-essential xsel arandr software-properties-common baobab htop doublecmd-qt rxvt-unicode apt-transport-https x11-utils -y
+sudo apt install xinit curl git build-essential xsel arandr software-properties-common baobab htop doublecmd-qt rxvt-unicode apt-transport-https x11-utils psmisc -y
 # font JetBrains
 sudo apt install fonts-jetbrains-mono -y
 # cursor. if user's choice needed - sudo update-alternatives --config x-cursor-theme
@@ -61,13 +61,11 @@ echo "unsetopt share_history" >> ~/.zshrc
 echo "PATH=$PATH:/usr/sbin" >> ~/.zshrc
 # manual change shell
 #sudo nano /etc/passwd
-zsh
 
 
 # OhMyZSH
 # https://github.com/ohmyzsh/ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-omz update
 sed -i 's/_THEME=\"robbyrussell\"/_THEME=\"agnoster\"/g' ~/.zshrc
 
 
@@ -116,7 +114,7 @@ sudo apt install polybar -y
 sudo apt install pulseaudio -y
 # config.ini
 mkdir -p ~/.config/polybar
-cp $SCRIPT_PATH/.config/polybar/config.ini ~/.config/polybar/config.ini
+cp $SCRIPT_PATH/.config/polybar/config ~/.config/polybar/config
 # launch.sh
 cat << EOF >> ~/.config/polybar/launch.sh
 #!/usr/bin/zsh
