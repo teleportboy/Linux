@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -o errexit
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
 
 # System
 sudo apt install xinit curl git build-essential xsel arandr software-properties-common baobab htop doublecmd-qt rxvt-unicode apt-transport-https x11-utils -y
@@ -115,7 +116,7 @@ sudo apt install polybar -y
 sudo apt install pulseaudio -y
 # config.ini
 mkdir -p ~/.config/polybar
-cp .config/polybar/config.ini ~/.config/polybar/config.ini
+cp $SCRIPT_PATH/.config/polybar/config.ini ~/.config/polybar/config.ini
 # launch.sh
 cat << EOF >> ~/.config/polybar/launch.sh
 #!/usr/bin/zsh
