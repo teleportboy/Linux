@@ -58,7 +58,8 @@ sudo apt install zsh -y
 sudo chsh -s /bin/zsh $(whoami)
 echo "unsetopt inc_append_history" >> ~/.zshrc
 echo "unsetopt share_history" >> ~/.zshrc
-echo "PATH=$PATH:/usr/sbin" >> ~/.zshrc
+echo "PATH=\$PATH:/usr/sbin" >> ~/.zprofile
+source ~/.zprofile
 # manual change shell
 #sudo nano /etc/passwd
 
@@ -95,7 +96,7 @@ sed -i 's/$mod+Shift+q/$mod+q/g' ~/.config/i3/config
 # i3 term change
 sed -i "s/i3-sensible-terminal/urxvt/g" ~/.config/i3/config
 # xinit 
-echo 'xrdb merge ~/.Xresources' >> ~/.xinitrc
+echo 'xrdb -merge ~/.Xresources' >> ~/.xinitrc
 echo 'exec i3' >> ~/.xinitrc
 
 
