@@ -198,3 +198,5 @@ module-margin = 1
 separator = " "
 separator-foreground = ${colors.disabled}
 font-0 = JetBrainsMono-Thin;2
+; MacBookPro M1:
+; dpi = 180

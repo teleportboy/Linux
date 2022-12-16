@@ -16,15 +16,21 @@ sudo update-alternatives --set x-cursor-theme /etc/X11/cursors/Breeze_Snow.theme
 case $(systemd-detect-virt) in
   vmware)
     sudo apt install open-vm-tools open-vm-tools-desktop -y
-    # VMware MacBook 14''. RESOLUTION FIX
+    # VMware MacBook 14". HiDPI FIX
     #   Notch: 74pixels. VMWare fullscreen ratio 1.6
     #   xrandr --listactivemonitors should be Virtual-1 in VMware
-    # echo 'cvt 1760 1100' >> ~/.xprofile
-    # echo 'xrandr --newmode "1760x1100_60.00"  160.75  1760 1872 2056 2352  1100 1103 1109 1141 -hsync +vsync' >> ~/.xprofile
-    # echo 'xrandr --addmode Virtual-1 "1760x1100_60.00"' >> ~/.xprofile
-    # echo 'xrandr --output Virtual-1 --mode 1760x1100_60.00' >> ~/.xprofile
-    # echo '[ -f /etc/xprofile ] && . /etc/xprofile' >> ~/.xinitrc
-    # echo '[ -f ~/.xprofile ] && . ~/.xprofile' >> ~/.xinitrc
+    #
+    # DPI-Change:
+    # echo 'xrandr --Virtual-1 --dpi 180' >> ~/.xprofile
+    # echo 'Xft.dpi: 180' >> ~/.Xresources
+    #
+    ## Resolution change. Cons: blurred output
+    ## echo 'cvt 1760 1100' >> ~/.xprofile
+    ## echo 'xrandr --newmode "1760x1100_60.00"  160.75  1760 1872 2056 2352  1100 1103 1109 1141 -hsync +vsync' >> ~/.xprofile
+    ## echo 'xrandr --addmode Virtual-1 "1760x1100_60.00"' >> ~/.xprofile
+    ## echo 'xrandr --output Virtual-1 --mode 1760x1100_60.00' >> ~/.xprofile
+    ## echo '[ -f /etc/xprofile ] && . /etc/xprofile' >> ~/.xinitrc
+    ## echo '[ -f ~/.xprofile ] && . ~/.xprofile' >> ~/.xinitrc
     ;;
   *)
     # TLP
@@ -55,9 +61,7 @@ sudo udevadm trigger --subsystem-match=input --action=change
 
 # ZSH
 sudo apt install zsh -y
-sudo chsh -s /bin/zsh $(whoami)
-echo "unsetopt inc_append_history" >> ~/.zshrc
-echo "unsetopt share_history" >> ~/.zshrc
+sudo chsh -s /usr/bin/zsh $(whoami)
 echo "PATH=\$PATH:/usr/sbin" >> ~/.zprofile
 source ~/.zprofile
 # manual change shell
@@ -68,7 +72,8 @@ source ~/.zprofile
 # https://github.com/ohmyzsh/ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i 's/_THEME=\"robbyrussell\"/_THEME=\"agnoster\"/g' ~/.zshrc
-
+echo "unsetopt inc_append_history" >> ~/.zshrc
+echo "unsetopt share_history" >> ~/.zshrc
 
 # i3
 # https://i3wm.org/
