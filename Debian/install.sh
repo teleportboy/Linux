@@ -5,8 +5,12 @@ SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
 
 # System
 sudo apt install xinit curl git build-essential xsel arandr software-properties-common baobab htop doublecmd-qt rxvt-unicode apt-transport-https x11-utils psmisc -y
-# font JetBrains
+
+# Fonts
 sudo apt install fonts-jetbrains-mono -y
+sudo apt install ttf-mscorefonts-installer -y
+sudo fc-cache  -f -v
+
 # cursor. if user's choice needed - sudo update-alternatives --config x-cursor-theme
 sudo apt install breeze-cursor-theme -y
 sudo update-alternatives --set x-cursor-theme /etc/X11/cursors/Breeze_Snow.theme
