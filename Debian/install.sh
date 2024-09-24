@@ -99,6 +99,8 @@ URxvt.background: #1E1E1E
 URxvt.clipboard.autocopy: true
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+URxvt.color4: #1E90FF
+URxvt.color12: #1E90FF
 EOF
 # i3 close shortcut change
 sed -i 's/$mod+Shift+q/$mod+q/g' ~/.config/i3/config
