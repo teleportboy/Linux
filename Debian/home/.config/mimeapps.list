@@ -1,0 +1,11 @@
+
+[Default Applications]
+text/html=opera.desktop
+x-scheme-handler/http=opera.desktop
+x-scheme-handler/https=opera.desktop
+x-scheme-handler/about=opera.desktop
+x-scheme-handler/unknown=opera.desktop
+application/pdf=org.pwmt.zathura.desktop
+application/vnd.sqlite3=SQLiteStudio.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop

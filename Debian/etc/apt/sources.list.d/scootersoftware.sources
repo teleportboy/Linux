@@ -1,0 +1,6 @@
+Types: deb
+URIs: https://www.scootersoftware.com/debian/
+Suites: bcompare5
+Components: non-free
+Architectures: amd64
+Signed-By: /etc/apt/keyrings/DEB-GPG-KEY-scootersoftware.asc

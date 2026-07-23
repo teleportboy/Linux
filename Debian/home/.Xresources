@@ -1,0 +1,17 @@
+URxvt.scrollstyle: xterm
+URxvt.scrollBar: false
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+URxvt.font: xft:JetBrainsMono-Medium:size=13
+URxvt.letterSpace: 0
+URxvt.cursorBlink: false
+URxvt.colorUL: #4682B4
+URxvt.foreground: #EAEAEA
+URxvt.background: #1E1E1E
+URxvt.color4: #1E90FF
+URxvt.color12: #1E90FF
+URxvt.clipboard.autocopy: true
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.termName: xterm-256color
