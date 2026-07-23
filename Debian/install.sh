@@ -86,7 +86,8 @@ if ! sudo -v; then
 fi
 
 exec > >(tee -a "$LOG_FILE") 2>&1
-VIRT="$(systemd-detect-virt 2> /dev/null || true)"
+# FORCE_VIRT=none bash install.sh  — exercise the bare-metal branch inside a VM
+VIRT="${FORCE_VIRT:-$(systemd-detect-virt 2> /dev/null || true)}"
 log "Start: virt=$VIRT, log=$LOG_FILE, repo=$SCRIPT_PATH"
 
 # NOPASSWD first: long apt sections outlive the 15-min sudo ticket, and an

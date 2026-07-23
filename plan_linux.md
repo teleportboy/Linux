@@ -57,15 +57,25 @@
 3. ✅ TC-P8.1: все apt-имена через `apt-cache policy` на живой машине.
 4. ✅ Адверсариальное ревью: 4 агента (walkthrough, идемпотентность, интерактив, гигиена репо), 25 находок, все закрыты/сняты — таблица R1–R12 в спеке.
 
-## Этап 4: Живой прогон на железе ⬜ (вечер 2026-07-23)
+## Этап 4: Прогон в чистой VM ⬜ (добавлен 2026-07-23 по решению юзера: сначала VM, потом железо)
 
-1. ⬜ Debian 12 netinstall (галки по docs/install_usage.md).
+Свежая VM с debian-12-netinst, галки по docs/install_usage.md (root-пароль ПУСТОЙ).
+
+1. ⬜ Обычный прогон: `git clone https://github.com/teleportboy/Linux ~/Linux && bash ~/Linux/Debian/install.sh` → доехал до DONE без единого вопроса после ввода пароля; SKIPPED пуст либо каждая строка объяснима (лежащий сторонний сайт).
+2. ⬜ Ветка железа: `FORCE_VIRT=none bash ~/Linux/Debian/install.sh` — NM+firmware+microcode встали, `/etc/network/interfaces` переписан на lo-only (бэкап создан), после reboot сеть жива (интерфейс забрал NM).
+3. ⬜ Повторный прогон (TC-P3.1): `grep -c /usr/sbin ~/.zprofile` = 1, без ложных SKIPPED, apt update с лежащей репой не валит прогон.
+4. ⬜ reboot → `startx`: i3+polybar живы, раскладка Win+Space работает, urxvt JetBrains Mono 13.
+5. ⬜ Результаты в спеку («Статус») с датой; найденное — новыми строками в «Известные баги».
+
+## Этап 5: Живой прогон на железе ⬜ (после Этапа 4)
+
+1. ⬜ Debian 12 netinstall (галки по docs/install_usage.md, root-пароль ПУСТОЙ).
 2. ⬜ `git clone https://github.com/teleportboy/Linux ~/Linux && bash ~/Linux/Debian/install.sh`.
 3. ⬜ reboot → login → `startx` → TC-P7.1 (Wi-Fi через nmtui), раскладка Win+Space.
 4. ⬜ Ручной перенос по таблице из спеки (~/.ssh с правами 700/600!, /opt/*, ~/WORKSHOP, NXP, Cursor/RustRover).
 5. ⬜ Результаты прогона дописать в спеку («Статус») с датой.
 
-## Этап 5: preseed («2 кнопки») ⏸
+## Этап 6: preseed («2 кнопки») ⏸
 
 ⏸ отложено решением юзера 2026-07-23: вечером — надёжная 1 кнопка; preseed делаем отдельно и обкатываем в VM, не на живом железе.
 

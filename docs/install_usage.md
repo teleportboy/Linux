@@ -58,6 +58,19 @@ startx
 | `~/bin/GitExtensions` | скопировать каталог (mono уже стоит) |
 | Cursor, RustRover | AppImage/tarball с сайтов → `~/apps` |
 
+## Тест в виртуалке (перед железом)
+
+Тот же сценарий, что и на железе (netinstall → clone → bash). Один нюанс:
+в VM ветка голого железа сама не выполнится (`systemd-detect-virt` вернёт
+vmware/oracle/kvm) — для её проверки есть хук:
+
+```sh
+FORCE_VIRT=none bash ~/Linux/Debian/install.sh
+```
+
+— тогда NetworkManager, firmware и microcode поставятся как на железе.
+Чеклист VM-прогона — Этап 4 в `../plan_linux.md`.
+
 ## Что изменилось против старой ручной установки
 
 - Раскладка переключается **Win+Space**, правый Ctrl больше ничего не делает
